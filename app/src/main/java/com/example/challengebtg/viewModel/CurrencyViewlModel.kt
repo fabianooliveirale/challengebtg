@@ -16,6 +16,7 @@ import com.example.challengebtg.model.*
 import com.example.challengebtg.utils.Convert
 import com.example.challengebtg.utils.CurrenciesFilter
 import com.example.challengebtg.utils.extension.debounce
+import com.example.challengebtg.utils.extension.toast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -72,7 +73,7 @@ class CurrencyViewlModel : ViewModel(), CoroutineScope {
 
     fun convert(amount: String) {
         if (selectedCurrencyFrom == null || selectedCurrencyTo == null || amount == "") {
-            resultLiveData.postValue("Choose a currency")
+            resultLiveData.postValue(MyApplication.context.getString(R.string.no_results_found))
             return
         }
 
@@ -136,6 +137,8 @@ class CurrencyViewlModel : ViewModel(), CoroutineScope {
         if (currencies.results.isNotEmpty()) {
             this.isCurrencyFrom = isCurrencyFrom
             view.findNavController().navigate(R.id.to_currencyListFragment)
+        }else{
+            (view.context as Activity).toast(view.context.getString(R.string.no_results_found))
         }
     }
 

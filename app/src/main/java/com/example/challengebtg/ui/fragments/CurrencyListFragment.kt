@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -41,6 +42,8 @@ class CurrencyListFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     }
 
     private val currenciesObserver = Observer<ArrayList<Currency>> { list ->
+        recyclerView.isGone = list.isEmpty()
+        textViewEmpty.isGone = list.isNotEmpty()
         adapter.replace(list)
     }
 

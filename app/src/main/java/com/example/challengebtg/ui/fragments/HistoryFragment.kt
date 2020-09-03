@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.challengebtg.R
@@ -40,7 +41,10 @@ class HistoryFragment : Fragment() {
 
     private fun initAdapter() {
         recyclerView.initGridLayout(adapter)
-        adapter.replace(HistoryDao().load()?.results ?: arrayListOf())
+        val list = HistoryDao().load()?.results ?: arrayListOf()
+        adapter.replace(list)
+        recyclerView.isGone = list.isEmpty()
+        textViewEmpty.isGone = list.isNotEmpty()
     }
 
     private fun initToolbar() = setToolbar("History")
