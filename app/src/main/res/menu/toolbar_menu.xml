@@ -6,4 +6,19 @@
         android:icon="@drawable/ic_search"
         app:showAsAction="always|collapseActionView"
         android:title="@string/search" />
+
+    <item
+        android:id="@+id/filter"
+        android:icon="@drawable/ic_filter"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="@string/search">
+        <menu>
+            <item
+                android:id="@+id/codeFilter"
+                android:title="@string/code" />
+            <item
+                android:id="@+id/nameFilter"
+                android:title="@string/name" />
+        </menu>
+    </item>
 </menu>

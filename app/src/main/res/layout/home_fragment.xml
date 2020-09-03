@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.challengerbtg.viewModel.CurrencyViewlModel" />
+            type="com.example.challengebtg.viewModel.CurrencyViewlModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,8 +31,7 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:ms_dropdown_max_height="250dp" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/textTo"
@@ -50,8 +49,7 @@
             android:hint="@string/select_currency"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/textFrom"
-            app:ms_dropdown_max_height="250dp" />
+            app:layout_constraintTop_toTopOf="@+id/textFrom" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -69,7 +67,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="16dp"
             android:text="From:"
             app:layout_constraintStart_toStartOf="@+id/textFrom"
             app:layout_constraintTop_toTopOf="parent" />
@@ -106,6 +104,7 @@
             android:id="@+id/buttonHistory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:theme="@style/button"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
@@ -115,28 +114,15 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ProgressBar
-            android:id="@+id/progressBarFrom"
+            android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/textFrom"
-            app:layout_constraintEnd_toEndOf="@+id/textFrom"
-            app:layout_constraintStart_toStartOf="@+id/textFrom"
-            app:layout_constraintTop_toTopOf="@+id/textFrom" />
-
-        <ProgressBar
-            android:id="@+id/progressBarTo"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="57dp"
-            android:layout_marginEnd="64dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/textTo"
-            app:layout_constraintEnd_toEndOf="@+id/textTo"
-            app:layout_constraintStart_toStartOf="@+id/textTo"
-            app:layout_constraintTop_toTopOf="@+id/textTo" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textViewResult"
@@ -154,7 +140,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
-            android:text="Convert"
+            android:theme="@style/button"
+            android:text="@string/convert"
             android:onClick="@{()-> viewModel.convert(editTextAmount.getText().toString())}"
             app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
             app:layout_constraintEnd_toEndOf="parent"

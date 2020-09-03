@@ -9,11 +9,18 @@
 
     <style name="textInput" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="errorIconDrawable">@null</item>
-        <item name="hintTextColor">@color/dimGray</item>
+        <item name="hintTextColor">@color/colorAccent</item>
         <item name="boxBackgroundColor">@color/colorAccent</item>
         <item name="boxStrokeWidth">0dp</item>
-        <item name="errorTextColor">@color/dimGray</item>
-        <item name="colorControlActivated">@color/dimGray</item>
+        <item name="errorTextColor">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <style name="button" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:elevation">6dp</item>
+        <item name="android:radius">5dp</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.challengerbtg.viewModel.CurrencyViewlModel" />
+            type="com.example.challengebtg.viewModel.CurrencyViewlModel" />
     </data>
 
     <LinearLayout

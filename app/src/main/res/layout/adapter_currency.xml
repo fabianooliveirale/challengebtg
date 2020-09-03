@@ -5,12 +5,16 @@
     <data>
 
         <variable
+            name="position"
+            type="int" />
+
+        <variable
             name="currency"
-            type="com.example.challengerbtg.model.Currency" />
+            type="com.example.challengebtg.model.Currency" />
 
         <variable
             name="viewModel"
-            type="com.example.challengerbtg.viewModel.CurrencyViewlModel" />
+            type="com.example.challengebtg.viewModel.CurrencyViewlModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,22 +26,33 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="1dp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:ellipsize="end"
             android:focusable="true"
             android:maxLines="1"
-            android:paddingVertical="6dp"
-            android:text="@{currency.code + `: ` +  currency.name}"
             android:onClick="@{(v)-> viewModel.selectCurrency(v, currency)}"
+            android:paddingVertical="12dp"
+            android:text="@{currency.code + `: ` +  currency.name}"
+            fadeInRight="@{position}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"
+            fadeIn="@{position}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
