@@ -80,7 +80,7 @@ class CurrencyViewlModel : ViewModel(), CoroutineScope {
             selectedCurrencyFrom ?: Currency(),
             selectedCurrencyTo ?: Currency(),
             quotes,
-            amount
+            amount.toDouble()
         )
 
         val resultString =

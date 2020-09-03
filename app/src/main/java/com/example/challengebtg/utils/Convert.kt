@@ -10,11 +10,11 @@ class Convert {
         currencyFrom: Currency,
         currencyTo: Currency,
         quotes: ArrayList<Quotation>,
-        amount: String
-    ): String {
+        amount: Double
+    ): String? {
         val quotationFrom = currencyFrom.toQuotation(quotes).value ?: 0.0
         val quotationTo = currencyTo.toQuotation(quotes).value ?: 0.0
-        val amountInDolar = amount.toDouble() / quotationFrom
+        val amountInDolar = amount / quotationFrom
 
         val formatter: NumberFormat = DecimalFormat("#.##")
         return formatter.format(amountInDolar * quotationTo)
