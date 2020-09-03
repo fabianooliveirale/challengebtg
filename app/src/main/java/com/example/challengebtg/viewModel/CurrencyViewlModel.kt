@@ -27,7 +27,6 @@ class CurrencyViewlModel : ViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext = Dispatchers.Main + Job()
 
     var quotes = ArrayList<Quotation>()
-    var result = ""
     var filter = Filter()
 
     var isCurrencyFrom = true
