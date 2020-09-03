@@ -15,7 +15,6 @@ import com.example.challengebtg.R
 import com.example.challengebtg.databinding.HomeFragmentBinding
 import com.example.challengebtg.utils.ViewAnimation
 import com.example.challengebtg.utils.extension.setHomeToolbar
-import com.example.challengebtg.utils.extension.setToolbar
 import com.example.challengebtg.utils.extension.toast
 import com.example.challengebtg.viewModel.CurrencyViewlModel
 import kotlinx.android.synthetic.main.home_fragment.*
@@ -34,13 +33,10 @@ class HomeFragment : Fragment() {
     }
 
     private val errorObserver = Observer<String> { error ->
-        activity?.toast(error)
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        viewModel.requestToListCurrencies()
-        viewModel.requestGetQuotes()
+        if(error != ""){
+            activity?.toast(error)
+            viewModel.errorLiveData.value = ""
+        }
     }
 
     override fun onCreateView(

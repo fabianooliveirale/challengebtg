@@ -44,6 +44,11 @@ class CurrencyViewlModel : ViewModel(), CoroutineScope {
      * Filter
      **/
 
+    init {
+        requestToListCurrencies()
+        requestGetQuotes()
+    }
+
     val textSearchChange: (String) -> Unit = debounce(
         500L,
         this
@@ -61,7 +66,7 @@ class CurrencyViewlModel : ViewModel(), CoroutineScope {
         applyFilter()
     }
 
-    fun applyFilter() {
+    private fun applyFilter() {
         val currencies = CurrenciesDao().load()?.results ?: arrayListOf()
         val newCurrencies = CurrenciesFilter().apply(currencies, filter)
         currencyLiveData.postValue(newCurrencies)
