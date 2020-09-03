@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.HomeFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.challengerbtg.viewModel.CurrencyViewlModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textFrom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/background_radius"
+            android:focusable="true"
+            android:padding="4dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:onClick="@{(v) -> viewModel.gotoCurrencyList(v, true)}"
+            android:text="@={viewModel.selectedCurrencyFrom.code}"
+            android:hint="@string/select_currency"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:ms_dropdown_max_height="250dp" />
+
+        <TextView
+            android:id="@+id/textTo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/background_radius"
+            android:padding="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:onClick="@{(v) -> viewModel.gotoCurrencyList(v, false)}"
+            android:text="@={viewModel.selectedCurrencyTo.code}"
+            android:hint="@string/select_currency"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/textFrom"
+            app:ms_dropdown_max_height="250dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_change"
+            app:layout_constraintBottom_toBottomOf="@+id/textFrom"
+            app:layout_constraintEnd_toStartOf="@+id/textTo"
+            app:layout_constraintStart_toEndOf="@+id/textFrom"
+            app:layout_constraintTop_toTopOf="@+id/textFrom" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="From:"
+            app:layout_constraintStart_toStartOf="@+id/textFrom"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:text="To:"
+            app:layout_constraintStart_toStartOf="@+id/textTo"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonConvert"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textFrom">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Amount"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="History"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progressBarFrom"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/textFrom"
+            app:layout_constraintEnd_toEndOf="@+id/textFrom"
+            app:layout_constraintStart_toStartOf="@+id/textFrom"
+            app:layout_constraintTop_toTopOf="@+id/textFrom" />
+
+        <ProgressBar
+            android:id="@+id/progressBarTo"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="57dp"
+            android:layout_marginEnd="64dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/textTo"
+            app:layout_constraintEnd_toEndOf="@+id/textTo"
+            app:layout_constraintStart_toStartOf="@+id/textTo"
+            app:layout_constraintTop_toTopOf="@+id/textTo" />
+
+        <TextView
+            android:id="@+id/textViewResult"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@={viewModel.result}"
+            app:layout_constraintEnd_toEndOf="@+id/buttonConvert"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+        <Button
+            android:id="@+id/buttonConvert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="Convert"
+            android:onClick="@{()-> viewModel.convert(editTextAmount.getText().toString())}"
+            app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayout"
+            app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
