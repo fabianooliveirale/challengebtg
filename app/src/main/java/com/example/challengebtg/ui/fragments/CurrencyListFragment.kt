@@ -16,6 +16,7 @@ import com.example.challengebtg.R
 import com.example.challengebtg.dao.CurrenciesDao
 import com.example.challengebtg.databinding.FragmentCurrencyListBinding
 import com.example.challengebtg.model.Currency
+import com.example.challengebtg.model.Filter
 import com.example.challengebtg.ui.MainActivity
 import com.example.challengebtg.ui.adapter.AdapterCurrencyList
 import com.example.challengebtg.utils.ViewAnimation
@@ -54,10 +55,15 @@ class CurrencyListFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initFilter()
         initLiveData()
         initToolbar()
         initInputText()
         initAdapter()
+    }
+
+    private fun initFilter() {
+        viewModel.filter = Filter()
     }
 
     private fun initAdapter() {
